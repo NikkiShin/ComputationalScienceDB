@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <meta charset='utf-8'>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script src="/javascripts/jquery-2.2.3.min.js"></script>
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <p>
+    <form id="home" action="/home" method="post">
+    	<table width="400" border="1" style="border-collapse:collapse;">
+    		<tr>
+    			<th><a href="/kflow_input">kflow</th>
+    		</tr>
+    		<tr>
+    			<th><a href="/simulation2_input">simulation2</th>
+    		</tr>
+    		<tr>
+    			<th><a href="/simulation3_input">simulation3</th>
+    		</tr>
+    	</table>
+    </form>
+  </body>
+</html>

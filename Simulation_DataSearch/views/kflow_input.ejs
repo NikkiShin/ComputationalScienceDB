@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title><%= title %></title>
+   <meta charset='utf-8'>
+   <link rel='stylesheet' href='/stylesheets/style.css' />
+   <script src="/javascripts/jquery-2.2.3.min.js"></script>
+   </head>
+<body>
+   <h1><%= title %></h1>
+   <font color = "red">*부분은 필수 입력항목입니다</font> <p>
+   <form id="kflow_input" action="/kflow_output" method="post" onClick = "onbtnSearch()" onSubmit = "onWriteSubmit()" >
+   <table>   
+   	<% for(var i=0; i<4; i++){
+    	%><tr>
+            <th><font color = "red">*</font><%=items[i]%></th>
+            <td><input type="text" name="<%=items[i]%>" id="<%=items[i]%>" size="30" maxLength="20" required></td>
+        </tr><% 
+    }%>
+
+    <% for(var i=4; i<items.length; i++){
+    	%><tr>
+            <th><%=items[i]%></th>
+            <td><input type="text" name="<%=items[i]%>" id="<%=items[i]%>" size="30" maxLength="20"></td>
+        </tr><% 
+    }%>
+      
+         <tr>
+            <td colspan="2">
+               <div style="text-align:right;">
+               <input type="submit" id="btnSearch" name="search" value="search" onClick = "onbtnSearch();" > 
+               <input type="reset" name="cancel" value="cancel">
+               </div>
+            </td>
+         </tr>
+
+      </table>
+   </form>
+   <script>
+   function onWriteSubmit()
+   {
+      if( $("#Grid").val().trim() == "" )
+      {
+         var message = "Grid을 입력해 주세요";
+            $("#Grid").val("");
+            $("#Grid").focus();
+            alert(message);
+            return false;
+      }
+
+      if( $("#Umach").val().trim() == "" )
+      {
+         var message = "Umach를 입력해 주세요";
+            $("#Umach").val("");
+            $("#Umach").focus();
+            alert(message);
+            return false;
+      }
+
+      if( $("#AOA").val().trim() == "" )
+      {
+         var message = "aoa를 입력해 주세요";
+            $("#AOA").val("");
+            $("#AOA").focus();
+            alert(message);
+            return false;
+      }
+
+      if( $("#RE").val().trim() == "" )
+      {
+         var message = "RE를 입력해 주세요";
+            $("#RE").val("");
+            $("#RE").focus();
+            alert(message);
+            return false;
+      }
+   }
+   function onBtnSearch()
+   {
+   	$("#btnSearch").click(function() {
+   		console.log("submit");
+   		$("#kflow_output").submit();
+   	});
+   }
+   </script>
+</body>
+</html>
